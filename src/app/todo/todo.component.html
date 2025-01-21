@@ -1,0 +1,14 @@
+<section class="todo-page-wrapper">
+  <app-container>
+    <div class="todo-page-content">
+      <h4>Someday List</h4>
+      <form class="todo-input-wrapper" (submit)="todoService.addTodo($event)">
+        <input type="text" placeholder="Add a new item" [value]="todoService.todoInput()" (input)="todoService.onTodoInputChange($event)" />
+        <button class="add-button" (click)="todoService.addTodo($event)">+</button>
+      </form>
+      <div class="todo-list-wrapper">
+        <app-todo-item (delete)="todoService.onDelete($event)" *ngFor="let item of todoService.todoList()" [todoItem]="item" />
+      </div>
+    </div>
+  </app-container>
+</section>

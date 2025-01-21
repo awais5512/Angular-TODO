@@ -1,0 +1,31 @@
+<form (submit)="submitHandler($event)">
+  <h2 class="form-title">Register Your Account</h2>
+  <div>
+    <label for="email">Email</label>
+    <input type="email" id="email" (input)="onEmailChange($event)" />
+  </div>
+  <div>
+    <label for="password">Password</label>
+    <input type="password" id="password" (input)="onPasswordChange($event)" />
+  </div>
+  <div class="submit-button-wrapper">
+    <button type="submit">Register</button>
+    <div class="password-length">{{ passwordLength() }}</div>
+  </div>
+  <div>
+    <p>
+      @if (email()) {
+        Email: {{ email() }}
+      } @else {
+        Email: Not Set
+      }
+    </p>
+    <p>
+      @if (password()) {
+        Password:{{ password() }}
+      } @else {
+        Password: Not Set
+      }
+    </p>
+  </div>
+</form>
