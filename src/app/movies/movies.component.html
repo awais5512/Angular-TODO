@@ -1,0 +1,21 @@
+<section>
+  <app-container>
+    <h1 class="title">Movies List</h1>
+    <div *ngIf="isLoading; else movieList" class="movies-grid">
+      <div class="skeleton-movie" *ngFor="let skeleton of skeletons">
+        <div class="skeleton skeleton-poster"></div>
+        <div class="skeleton skeleton-title"></div>
+      </div>
+    </div>
+    <ng-template #movieList>
+      <ul class="movies-grid">
+        <li *ngFor="let movie of movies" class="movie-card">
+          <div class="image-wrapper">
+            <img [src]="movie.Poster" alt="{{ movie.Title }}" width="100%" />
+          </div>
+          <p>{{ movie.Title }} ({{ movie.Year }})</p>
+        </li>
+      </ul>
+    </ng-template>
+  </app-container>
+</section>
