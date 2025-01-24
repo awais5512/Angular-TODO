@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MoviesService } from '../movies.service';
+import { MoviesService } from '../services/movies.service';
 import { Movie } from '../types/movie.types';
 import { NgClass, NgFor, NgIf } from '@angular/common';
 import { ContainerComponent } from '../components/container/container.component';
