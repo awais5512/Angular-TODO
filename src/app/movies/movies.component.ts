@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { MoviesService } from '../movies.service';
 import { Movie } from '../types/movie.types';
-import { NgFor, NgIf } from '@angular/common';
+import { NgClass, NgFor, NgIf } from '@angular/common';
 import { ContainerComponent } from '../components/container/container.component';
 
 @Component({
   selector: 'app-movies',
-  imports: [NgFor, NgIf, ContainerComponent, ContainerComponent],
+  imports: [NgFor, NgIf, NgClass, ContainerComponent, ContainerComponent],
   templateUrl: './movies.component.html',
   styleUrl: './movies.component.css',
 })
@@ -16,6 +16,10 @@ export class MoviesComponent implements OnInit {
   skeletons = Array(5);
 
   constructor(private moviesService: MoviesService) {}
+
+  containsNumber(title: string): boolean {
+    return /\d/.test(title);
+  }
 
   ngOnInit() {
     this.moviesService.getMoviesList().subscribe({

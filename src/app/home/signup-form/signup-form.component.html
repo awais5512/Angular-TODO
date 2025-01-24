@@ -9,23 +9,17 @@
     <input type="password" id="password" (input)="onPasswordChange($event)" />
   </div>
   <div class="submit-button-wrapper">
-    <button type="submit">Register</button>
+    <button type="submit" [disabled]="disableSubmit()">Register</button>
     <div class="password-length">{{ passwordLength() }}</div>
   </div>
   <div>
     <p>
-      @if (email()) {
-        Email: {{ email() }}
-      } @else {
-        Email: Not Set
-      }
+      @if (email()) { Email: {{ email() }}
+      } @else { Email: Not Set }
     </p>
     <p>
-      @if (password()) {
-        Password:{{ password() }}
-      } @else {
-        Password: Not Set
-      }
+      @if (password()) { Password:{{ password() }}
+      } @else { Password: Not Set }
     </p>
   </div>
 </form>

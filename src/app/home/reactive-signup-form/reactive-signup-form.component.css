@@ -43,6 +43,10 @@ button:hover {
   flex: 1;
 }
 
+.error {
+  color: red;
+}
+
 .submit-button-wrapper .password-length {
   background-color: #000000;
   color: white;
