@@ -1,7 +1,7 @@
-import { Injectable, signal } from '@angular/core';
+import { Injectable, signal, SimpleChanges } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class TodosService {
   todoList = signal<string[]>([]);
@@ -14,7 +14,7 @@ export class TodosService {
       return;
     }
 
-    this.todoList.update(todos => [...todos, this.todoInput()]);
+    this.todoList.update((todos) => [...todos, this.todoInput()]);
     this.todoInput.set('');
   }
 
