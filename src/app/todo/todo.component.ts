@@ -1,12 +1,9 @@
-import { Component, inject, OnInit, SimpleChanges } from '@angular/core';
-import { ContainerComponent } from '../components/container/container.component';
-import { NgFor } from '@angular/common';
-import { TodoItemComponent } from './todo-item/todo-item.component';
+import { Component, inject, OnInit } from '@angular/core';
 import { TodosService } from '../services/todos.service';
 
 @Component({
   selector: 'app-todo',
-  imports: [ContainerComponent, NgFor, TodoItemComponent],
+  standalone: false,
   templateUrl: './todo.component.html',
   styleUrl: './todo.component.css',
 })

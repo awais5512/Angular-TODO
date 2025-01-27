@@ -8,7 +8,7 @@ import {
 
 @Component({
   selector: 'app-todo-item',
-  imports: [],
+  standalone: false,
   templateUrl: './todo-item.component.html',
   styleUrl: './todo-item.component.css',
 })

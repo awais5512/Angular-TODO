@@ -8,41 +8,6 @@
   padding: 1rem 0;
 }
 
-.movie-card {
-  overflow: hidden;
-}
-
-.movie-card .image-wrapper {
-  height: 300px;
-  overflow: hidden;
-  position: relative;
-}
-
-.movie-card .image-wrapper.special {
-  position: relative;
-}
-
-.movie-card .image-wrapper.special::before {
-  content: "";
-  position: absolute;
-  right: -20px;
-  top: -20px;
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  background-color: rgb(255, 98, 0);
-}
-
-.movie-card img {
-  height: 100%;
-  overflow: hidden;
-  transition: all 0.3s ease;
-}
-
-.movie-card:hover img {
-  transform: scale(1.1);
-}
-
 ul {
   list-style-type: none;
 }

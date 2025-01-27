@@ -9,15 +9,7 @@
     </div>
     <ng-template #movieList>
       <ul class="movies-grid">
-        <li *ngFor="let movie of movies" class="movie-card">
-          <div
-            class="image-wrapper"
-            [ngClass]="{ special: containsNumber(movie.Title) }"
-          >
-            <img [src]="movie.Poster" alt="{{ movie.Title }}" width="100%" />
-          </div>
-          <p>{{ movie.Title }} ({{ movie.Year }})</p>
-        </li>
+        <app-movie-card *ngFor="let movie of movies" [movie]="movie" />
       </ul>
     </ng-template>
   </app-container>

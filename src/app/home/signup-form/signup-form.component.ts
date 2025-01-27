@@ -2,7 +2,7 @@ import { Component, computed, signal } from '@angular/core';
 
 @Component({
   selector: 'app-signup-form',
-  imports: [],
+  standalone: false,
   templateUrl: './signup-form.component.html',
   styleUrl: './signup-form.component.css',
 })

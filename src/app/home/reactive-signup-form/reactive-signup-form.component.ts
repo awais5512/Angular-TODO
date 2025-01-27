@@ -1,15 +1,9 @@
-import { NgIf } from '@angular/common';
 import { Component } from '@angular/core';
-import {
-  FormControl,
-  FormGroup,
-  ReactiveFormsModule,
-  Validators,
-} from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-reactive-signup-form',
-  imports: [NgIf, ReactiveFormsModule],
+  standalone: false,
   templateUrl: './reactive-signup-form.component.html',
   styleUrl: './reactive-signup-form.component.css',
 })
