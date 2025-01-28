@@ -4,10 +4,11 @@ import { TodoComponent } from './todo.component';
 import { TodoItemComponent } from './todo-item/todo-item.component';
 import { TodosService } from '../services/todos.service';
 import { ContainerModule } from '../components/container/container.module';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [TodoComponent, TodoItemComponent],
-  imports: [CommonModule, ContainerModule],
+  imports: [CommonModule, ContainerModule, FormsModule],
   exports: [TodoComponent],
   providers: [TodosService],
 })

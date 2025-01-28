@@ -1,15 +1,16 @@
-.todo-page-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 2rem 0;
+.todo-page-container {
+  /* display: grid; */
+  /* grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); */
+  gap: 1rem;
 }
 
-.todo-page-content {
-  width: 400px;
+.todo-form-wrapper {
+  max-width: 400px;
   display: flex;
   flex-direction: column;
   gap: 0.4rem;
+  margin: 0 auto;
+  padding: 2rem 0;
 }
 
 .todo-input-wrapper {
@@ -39,8 +40,119 @@
   gap: 0.4rem;
 }
 
+.filters-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding-bottom: 1rem;
+}
+
+.filter-btns {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.filter-btn {
+  border: none;
+  background-color: rgb(234, 234, 234);
+  border-radius: 4px;
+  width: 100%;
+  padding: 0.8rem 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.filter-btn.active {
+  background-color: #4caf50;
+  color: white;
+}
+
+/* For graph */
+.todo-graph {
+  text-align: center;
+  height: calc(100vh - 128px);
+  position: sticky;
+  top: 0;
+}
+
+.todo-graph .title {
+  font-size: 1.2rem;
+  padding-block: 10px;
+}
+
+.graph-container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.y-axis {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 200px;
+  margin-right: 10px;
+  font-size: 0.8rem;
+  color: #555;
+}
+
+.y-axis span {
+  display: block;
+  margin-bottom: 2px;
+}
+
+.graph-wrapper {
+  display: flex;
+  gap: 10px;
+  align-items: flex-end;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  border: 1px solid #ddd;
+  padding: 10px;
+  background: #f9f9f9;
+  border-radius: 8px;
+  overflow-x: auto;
+}
+
+.bar {
+  width: 30px;
+  background-color: #6200ea;
+  color: #fff;
+  text-align: center;
+  font-size: 0.8rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.bar:hover {
+  background-color: #3700b3;
+  transform: scale(1.1);
+}
+
+.x-axis {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 10px;
+  font-size: 0.8rem;
+  color: #555;
+}
+
+.x-axis span {
+  width: 30px;
+  text-align: center;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
 @media (max-width: 400px) {
-  .todo-page-content {
+  .todo-form-wrapper {
     width: 100%;
   }
 }

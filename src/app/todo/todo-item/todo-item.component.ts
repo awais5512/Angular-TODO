@@ -5,6 +5,7 @@ import {
   Output,
   SimpleChanges,
 } from '@angular/core';
+import { TodoItem } from '../../types/todos.types';
 
 @Component({
   selector: 'app-todo-item',
@@ -13,15 +14,24 @@ import {
   styleUrl: './todo-item.component.css',
 })
 export class TodoItemComponent {
-  @Input() todoItem!: string;
-  @Output() delete = new EventEmitter<{ todoItem: string; extra: string }>();
+  @Input() todoItem!: TodoItem;
+  @Output() deleteTodo = new EventEmitter<string>();
+  @Output() editTodo = new EventEmitter<TodoItem>();
+  @Output() toggleComplete = new EventEmitter<string>();
 
-  handleDelete() {
-    this.delete.emit({ todoItem: this.todoItem, extra: 'dude' });
+  handleDeleteTodo() {
+    this.deleteTodo.emit(this.todoItem.id);
+  }
+
+  handleEditTodo() {
+    this.editTodo.emit(this.todoItem);
+  }
+
+  handleToggleComplete() {
+    this.toggleComplete.emit(this.todoItem.id);
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    console.log('ngOnChanges() triggered:');
     for (const inputName in changes) {
       const inputValues = changes[inputName];
       console.log(`Previous ${inputName} == ${inputValues.previousValue}`);

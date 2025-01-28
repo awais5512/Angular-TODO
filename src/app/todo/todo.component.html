@@ -1,25 +1,86 @@
-<section class="todo-page-wrapper">
+<section class="todo-page">
   <app-container>
-    <div class="todo-page-content">
-      <h4>Someday List</h4>
-      <form class="todo-input-wrapper" (submit)="todoService.addTodo($event)">
-        <input
-          type="text"
-          placeholder="Add a new item"
-          [value]="todoService.todoInput()"
-          (input)="todoService.onTodoInputChange($event)"
-        />
-        <button class="add-button" (click)="todoService.addTodo($event)">
-          +
-        </button>
-      </form>
-      <div class="todo-list-wrapper">
-        <app-todo-item
-          (delete)="todoService.onDelete($event)"
-          *ngFor="let item of todoService.todoList()"
-          [todoItem]="item"
-        />
+    <div class="todo-page-container">
+      <div class="todo-form-wrapper">
+        <h4>Someday List</h4>
+        <div class="filters-wrapper">
+          <input
+            type="text"
+            placeholder="Search todos..."
+            [(ngModel)]="todoService.searchText"
+          />
+          <div class="filter-btns">
+            <button
+              class="filter-btn"
+              (click)="todoService.filter.set('all')"
+              [ngClass]="{ active: todoService.filter() === 'all' }"
+            >
+              All
+            </button>
+            <button
+              class="filter-btn"
+              [ngClass]="{ active: todoService.filter() === 'completed' }"
+              (click)="todoService.filter.set('completed')"
+            >
+              Completed
+            </button>
+            <button
+              class="filter-btn"
+              [ngClass]="{ active: todoService.filter() === 'pending' }"
+              (click)="todoService.filter.set('pending')"
+            >
+              Pending
+            </button>
+          </div>
+        </div>
+        <form class="todo-input-wrapper" (submit)="todoService.addTodo($event)">
+          <input
+            type="text"
+            placeholder="Add a new item"
+            [value]="todoService.todoInput()"
+            (input)="todoService.onTodoInputChange($event)"
+          />
+          <button class="add-button" (click)="todoService.addTodo($event)">
+            +
+          </button>
+        </form>
+        <div class="todo-list-wrapper">
+          <app-todo-item
+            *ngFor="let item of todoService.getFilteredTodos()"
+            (deleteTodo)="todoService.onDelete(item.id)"
+            (toggleComplete)="todoService.toggleComplete(item.id)"
+            (editTodo)="todoService.onUpdate(item)"
+            [todoItem]="item"
+          />
+        </div>
       </div>
+      <!-- <div class="todo-graph">
+        <h4 class="title">Letter Count Visualization</h4>
+        <div class="graph-container">
+          <div class="y-axis">
+            <span *ngFor="let tick of yAxisTicks">{{ tick }}</span>
+          </div>
+
+          <div class="graph-wrapper">
+            <div
+              class="bar"
+              *ngFor="let todo of todoService.todoList(); let i = index"
+              [style.height]="getLetterCountHeight(todo.label) + 'px'"
+              [title]="
+                'Todo: ' + todo.label + ' | Letters: ' + todo.label.length
+              "
+            >
+              {{ todo.label.length }}
+            </div>
+          </div>
+        </div>
+
+        <div class="x-axis">
+          <span *ngFor="let todo of todoService.todoList()">{{
+            todo.label.substring(0, 2)
+          }}</span>
+        </div>
+      </div> -->
     </div>
   </app-container>
 </section>
