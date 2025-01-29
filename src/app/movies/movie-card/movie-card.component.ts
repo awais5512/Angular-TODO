@@ -10,8 +10,4 @@ import { Movie } from '../../types/movie.types';
 })
 export class MovieCardComponent {
   @Input() movie!: Movie;
-
-  containsNumber(title: string): boolean {
-    return /\d/.test(title);
-  }
 }
