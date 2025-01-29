@@ -2,7 +2,7 @@
   <h2 class="form-title">Register Your Account (Reactive Forms)</h2>
   <div>
     <label for="name">Name:</label>
-    <input id="name" formControlName="name" />
+    <input type="text" id="name" formControlName="name" />
     <div
       class="error"
       *ngIf="userForm.get('name')?.invalid && userForm.get('name')?.touched"
@@ -13,7 +13,7 @@
 
   <div>
     <label for="email">Email:</label>
-    <input id="email" formControlName="email" />
+    <input type="email" id="email" formControlName="email" />
     <div
       class="error"
       *ngIf="userForm.get('email')?.invalid && userForm.get('email')?.touched"
