@@ -47,9 +47,7 @@
         <div class="todo-list-wrapper">
           <app-todo-item
             *ngFor="let item of todoService.getFilteredTodos()"
-            (deleteTodo)="todoService.onDelete(item.id)"
             (toggleComplete)="todoService.toggleComplete(item.id)"
-            (editTodo)="todoService.onUpdate(item)"
             [todoItem]="item"
           />
         </div>

@@ -6,6 +6,7 @@ import {
   SimpleChanges,
 } from '@angular/core';
 import { TodoItem } from '../../types/todos.types';
+import { TodosService } from '../../services/todos.service';
 
 @Component({
   selector: 'app-todo-item',
@@ -15,16 +16,16 @@ import { TodoItem } from '../../types/todos.types';
 })
 export class TodoItemComponent {
   @Input() todoItem!: TodoItem;
-  @Output() deleteTodo = new EventEmitter<string>();
-  @Output() editTodo = new EventEmitter<TodoItem>();
-  @Output() toggleComplete = new EventEmitter<string>();
+  @Output() toggleComplete = new EventEmitter<string>(); // For Practice of Emitting Events
+
+  constructor(private todoService: TodosService) {}
 
   handleDeleteTodo() {
-    this.deleteTodo.emit(this.todoItem.id);
+    this.todoService.onDelete(this.todoItem.id);
   }
 
   handleEditTodo() {
-    this.editTodo.emit(this.todoItem);
+    this.todoService.onUpdate(this.todoItem);
   }
 
   handleToggleComplete() {
