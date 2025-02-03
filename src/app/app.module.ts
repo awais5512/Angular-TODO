@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { MoviesModule } from './movies/movies.module';
 import { AppComponent } from './app.component';
-import { RouterModule } from '@angular/router';
+import { PreloadAllModules, RouterModule } from '@angular/router';
 import { HeaderModule } from './components/header/header.module';
 import { routes } from './app.routes';
 import { TodosModule } from './todo/todo.module';
@@ -13,7 +13,7 @@ import { provideHttpClient } from '@angular/common/http';
   declarations: [AppComponent],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(routes),
+    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules }),
     MoviesModule,
     HomeModule,
     TodosModule,

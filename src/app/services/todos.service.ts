@@ -31,7 +31,7 @@ export class TodosService {
     };
 
     this.todoList.update((todos) => {
-      const updatedTodos = [...todos, newTodo];
+      const updatedTodos = [newTodo, ...todos];
       this.localstorage.set(this.TODO_STORAGE_KEY, updatedTodos);
 
       return updatedTodos;

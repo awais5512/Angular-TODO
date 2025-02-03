@@ -15,6 +15,7 @@ export const routes: Routes = [
   {
     path: 'todo',
     pathMatch: 'full',
+    loadChildren: () => import('./todo/todo.module').then((m) => m.TodosModule),
     component: TodoComponent,
     title: 'Todo',
   },
