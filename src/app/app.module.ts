@@ -8,12 +8,15 @@ import { routes } from './app.routes';
 import { TodosModule } from './todo/todo.module';
 import { HomeModule } from './home/home.module';
 import { provideHttpClient } from '@angular/common/http';
+import { SelectivePreloadingStrategyService } from './services/selective-preloading-strategy.service';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules }),
+    RouterModule.forRoot(routes, {
+      preloadingStrategy: SelectivePreloadingStrategyService,
+    }),
     MoviesModule,
     HomeModule,
     TodosModule,

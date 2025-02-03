@@ -22,6 +22,9 @@ export const routes: Routes = [
   {
     path: 'movies',
     component: MoviesComponent,
+    loadChildren: () =>
+      import('./movies/movies.module').then((m) => m.MoviesModule),
+    data: { preload: true }, // Preload the module with selective preloading strategy
     title: 'Movies',
   },
   {
