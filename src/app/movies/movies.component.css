@@ -39,6 +39,14 @@ img {
   height: 16px;
 }
 
+.movie-title {
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 1.2rem;
+  text-overflow: ellipsis;
+}
+
 @keyframes shimmer {
   0% {
     background-color: #e0e0e0;

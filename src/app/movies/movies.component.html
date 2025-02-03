@@ -9,7 +9,16 @@
     </div>
     <ng-template #movieList>
       <ul class="movies-grid">
-        <app-movie-card *ngFor="let movie of movies" [movie]="movie" />
+        <app-movie-card *ngFor="let movie of movies" [movie]="movie">
+          <div card-footer>
+            <p>Release Year: {{ movie.Year }}</p>
+          </div>
+          <div card-header>
+            <h2 class="movie-title" title="{{ movie.Title }}">
+              {{ movie.Title }}
+            </h2>
+          </div>
+        </app-movie-card>
       </ul>
     </ng-template>
   </app-container>

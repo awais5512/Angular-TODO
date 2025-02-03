@@ -1,9 +1,10 @@
 <li class="movie-card">
+  <ng-content select="[card-header]"></ng-content>
   <div
     class="image-wrapper"
     [ngClass]="{ special: movie.Title | containsNumber }"
   >
     <img [src]="movie.Poster" alt="{{ movie.Title }}" width="100%" />
   </div>
-  <p>{{ movie.Title }} ({{ movie.Year }})</p>
+  <ng-content select="[card-footer]"></ng-content>
 </li>
