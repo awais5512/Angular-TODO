@@ -21,7 +21,7 @@ import { fromEvent, map, scan, tap } from 'rxjs';
 export class TodoItemComponent {
   @Input() todoItem!: TodoItem;
   @Output() toggleComplete = new EventEmitter<string>(); // For Practice of Emitting Events
-  private colors = ['#ffcccb', '#add8e6', '#90ee90', '#ffffe0', '#d3d3d3'];
+  private colors = ['#ffcccb', '#add8e6', '#90ee90', '#ffffe0', '#db3784'];
 
   constructor(private todoService: TodosService, private el: ElementRef) {}
 
@@ -38,7 +38,6 @@ export class TodoItemComponent {
   }
 
   ngAfterViewInit() {
-    // Rxjs Operators Testing
     const deleteButton = this.el.nativeElement.querySelector('.delete');
 
     if (deleteButton) {
