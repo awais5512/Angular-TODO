@@ -1,6 +1,7 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, ElementRef, inject, OnInit } from '@angular/core';
 import { TodosService } from '../services/todos.service';
 import { TodoItem } from '../types/todos.types';
+import { fromEvent, scan, tap } from 'rxjs';
 
 @Component({
   selector: 'app-todo',
@@ -11,6 +12,8 @@ import { TodoItem } from '../types/todos.types';
 export class TodoComponent implements OnInit {
   title = 'Todo Page';
   todoService = inject(TodosService);
+
+  constructor(private el: ElementRef) {}
 
   ngOnInit() {
     console.log('ngOnInit() runs 1st');

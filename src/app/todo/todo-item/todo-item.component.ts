@@ -1,6 +1,7 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  ElementRef,
   EventEmitter,
   Input,
   Output,
@@ -8,6 +9,7 @@ import {
 } from '@angular/core';
 import { TodoItem } from '../../types/todos.types';
 import { TodosService } from '../../services/todos.service';
+import { fromEvent, map, scan, tap } from 'rxjs';
 
 @Component({
   selector: 'app-todo-item',
@@ -19,8 +21,9 @@ import { TodosService } from '../../services/todos.service';
 export class TodoItemComponent {
   @Input() todoItem!: TodoItem;
   @Output() toggleComplete = new EventEmitter<string>(); // For Practice of Emitting Events
+  private colors = ['#ffcccb', '#add8e6', '#90ee90', '#ffffe0', '#d3d3d3'];
 
-  constructor(private todoService: TodosService) {}
+  constructor(private todoService: TodosService, private el: ElementRef) {}
 
   handleDeleteTodo() {
     this.todoService.onDelete(this.todoItem.id);
@@ -32,6 +35,22 @@ export class TodoItemComponent {
 
   handleToggleComplete() {
     this.toggleComplete.emit(this.todoItem.id); // For Practice of Emitting Events
+  }
+
+  ngAfterViewInit() {
+    // Rxjs Operators Testing
+    const deleteButton = this.el.nativeElement.querySelector('.delete');
+
+    if (deleteButton) {
+      fromEvent(deleteButton, 'click')
+        .pipe(
+          map(() => Math.floor(Math.random() * this.colors.length)),
+          tap((index: number) => {
+            document.body.style.backgroundColor = this.colors[index];
+          })
+        )
+        .subscribe();
+    }
   }
 
   ngOnChanges(changes: SimpleChanges) {
