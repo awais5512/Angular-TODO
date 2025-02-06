@@ -7,9 +7,10 @@ import { HeaderModule } from './components/header/header.module';
 import { routes } from './app.routes';
 import { TodosModule } from './todo/todo.module';
 import { HomeModule } from './home/home.module';
-import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { SelectivePreloadingStrategyService } from './services/selective-preloading-strategy.service';
 import { DirectivesModule } from './directives.module';
+import { jwtInterceptor } from './interceptors/jwt.interceptor';
 
 @NgModule({
   declarations: [AppComponent],
@@ -26,6 +27,6 @@ import { DirectivesModule } from './directives.module';
     DirectivesModule,
   ],
   bootstrap: [AppComponent],
-  providers: [provideHttpClient()],
+  providers: [provideHttpClient(withInterceptors([jwtInterceptor]))],
 })
 export class AppModule {}

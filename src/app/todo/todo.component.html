@@ -34,19 +34,24 @@
           </div>
         </div>
         <form class="todo-input-wrapper" (submit)="todoService.addTodo($event)">
-          <input
-            type="text"
-            placeholder="Add a new item"
-            [value]="todoService.todoInput()"
-            (input)="todoService.onTodoInputChange($event)"
-          />
-          <button class="add-button" (click)="todoService.addTodo($event)">
-            +
-          </button>
+          <ng-container>
+            <input
+              type="text"
+              placeholder="Add a new item"
+              [value]="todoService.todoInput()"
+              (input)="todoService.onTodoInputChange($event)"
+            />
+            <button class="add-button" (click)="todoService.addTodo($event)">
+              +
+            </button>
+          </ng-container>
         </form>
         <div class="todo-list-wrapper">
           <app-todo-item
-            *ngFor="let item of todoService.getFilteredTodos()"
+            *ngFor="
+              let item of todoService.getFilteredTodos();
+              trackBy: todoItemIdentifier
+            "
             (toggleComplete)="todoService.toggleComplete(item.id)"
             [todoItem]="item"
           />

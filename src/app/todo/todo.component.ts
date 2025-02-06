@@ -1,5 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { TodosService } from '../services/todos.service';
+import { TodoItem } from '../types/todos.types';
 
 @Component({
   selector: 'app-todo',
@@ -13,6 +14,10 @@ export class TodoComponent implements OnInit {
 
   ngOnInit() {
     console.log('ngOnInit() runs 1st');
+  }
+
+  todoItemIdentifier(index: number, todoItem: TodoItem) {
+    return todoItem.id;
   }
 
   ngAfterContentInit() {

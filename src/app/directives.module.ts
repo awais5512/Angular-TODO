@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RainbowTextDirective } from './rainbow-text.directive';
+import { RainbowTextDirective } from './directives/rainbow-text.directive';
 
 @NgModule({
   declarations: [RainbowTextDirective],
