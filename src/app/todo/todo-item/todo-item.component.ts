@@ -9,7 +9,7 @@ import {
 } from '@angular/core';
 import { TodoItem } from '../../types/todos.types';
 import { TodosService } from '../../services/todos.service';
-import { fromEvent, map, scan, tap } from 'rxjs';
+import { fromEvent, map, tap } from 'rxjs';
 
 @Component({
   selector: 'app-todo-item',

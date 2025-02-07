@@ -1,7 +1,6 @@
 import { Component, ElementRef, inject, OnInit } from '@angular/core';
 import { TodosService } from '../services/todos.service';
 import { TodoItem } from '../types/todos.types';
-import { fromEvent, scan, tap } from 'rxjs';
 
 @Component({
   selector: 'app-todo',
